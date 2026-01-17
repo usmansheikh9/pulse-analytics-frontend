@@ -1,3 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+
 export default function App() {
-  return <div>Pulse</div>
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div>Pulse</div>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  )
 }
