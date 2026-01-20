@@ -1,0 +1,109 @@
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0, 217, 255, 0.15), transparent 60%),
+    radial-gradient(ellipse 50% 30% at 80% 100%, rgba(199, 125, 255, 0.1), transparent 60%);
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 70%);
+  pointer-events: none;
+}
+
+.card {
+  position: relative;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  background: rgba(13, 16, 24, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 40px;
+  box-shadow: 0 0 0 1px rgba(0,217,255,0.08), 0 24px 60px rgba(0,0,0,0.5);
+  animation: slideUp 0.4s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 32px;
+}
+
+.brandMark {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, rgba(0,217,255,0.18) 0%, rgba(0,217,255,0.05) 100%);
+  border: 1px solid rgba(0,217,255,0.3);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(0,217,255,0.2);
+}
+
+.brandText {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #00d9ff 0%, #c77dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin-bottom: 26px;
+}
+
+.submit { width: 100%; margin-top: 8px; padding: 12px; }
+
+.demo {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--muted);
+}
+
+.demo code {
+  color: var(--accent);
+  margin-left: 6px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 24px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
