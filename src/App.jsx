@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Layout from './components/layout/Layout'
 import LoginPage from './pages/LoginPage'
+import Dashboard from './pages/Dashboard'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -15,7 +16,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={user ? <Navigate to="/" replace /> : <LoginPage />} />
       <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-        <Route index element={<div>Dashboard placeholder</div>} />
+        <Route index element={<Dashboard />} />
       </Route>
     </Routes>
   )
