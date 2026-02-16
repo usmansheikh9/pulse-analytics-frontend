@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import api from '../services/api'
 import { ENDPOINTS } from '../config/endpoints'
 import { StatCard, SkeletonLoader } from '../components/ui'
+import { useSocket } from '../hooks/useSocket'
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState(null)
@@ -12,6 +13,9 @@ export default function Dashboard() {
       .then(r => setMetrics(r.data.data))
       .finally(() => setLoading(false))
   }, [])
+
+  const handleMetrics = useCallback(snapshot => setMetrics(snapshot), [])
+  useSocket(null, handleMetrics)
 
   return (
     <div>
@@ -24,10 +28,10 @@ export default function Dashboard() {
           <div key={i} className="card"><SkeletonLoader rows={3} height={20} /></div>
         )) : (
           <>
-            <StatCard label="Active Users" value={metrics?.active_users} color="cyan" icon="◈" />
-            <StatCard label="Requests/min" value={metrics?.requests_per_min} color="green" icon="↗" />
-            <StatCard label="Avg Response" value={metrics?.avg_response_time} unit="ms" color="amber" icon="◷" />
-            <StatCard label="Error Rate" value={metrics?.error_rate} unit="%" color="red" icon="!" />
+            <StatCard label="Active Users" value={metrics?.active_users} color="cyan" icon="◈" live />
+            <StatCard label="Requests/min" value={metrics?.requests_per_min} color="green" icon="↗" live />
+            <StatCard label="Avg Response" value={metrics?.avg_response_time} unit="ms" color="amber" icon="◷" live />
+            <StatCard label="Error Rate" value={metrics?.error_rate} unit="%" color="red" icon="!" live />
           </>
         )}
       </div>
