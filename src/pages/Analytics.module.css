@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.timeFilters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.barWrap { display: flex; align-items: center; gap: 10px; }
+.barFill {
+  height: 4px;
+  border-radius: 2px;
+  min-width: 2px;
+  transition: width 0.4s ease;
+}
