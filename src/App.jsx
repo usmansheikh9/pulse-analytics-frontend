@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
-import Layout from './components/layout/Layout'
-import LoginPage from './pages/LoginPage'
-import Dashboard from './pages/Dashboard'
-import Analytics from './pages/Analytics'
+import Layout       from './components/layout/Layout'
+import LoginPage    from './pages/LoginPage'
+import Dashboard    from './pages/Dashboard'
+import Analytics    from './pages/Analytics'
+import Settings     from './pages/Settings'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth()
@@ -21,8 +22,9 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={user ? <Navigate to="/" replace /> : <LoginPage />} />
       <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-        <Route index element={<Dashboard />} />
+        <Route index          element={<Dashboard />} />
         <Route path="analytics" element={<Analytics />} />
+        <Route path="settings"  element={<Settings />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
